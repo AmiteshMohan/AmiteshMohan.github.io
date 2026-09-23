@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amitesh Mohan</title>
+<meta name="description" content="Portfolio of Amitesh Mohan — MSBA graduate of Carnegie Mellon Tepper, applying data science and AI to finance and consulting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg-page:#F2EEE5;
+    --bg-ink:#16181B;
+    --bg-sage:#93A69E;
+    --bg-tan:#C9A876;
+    --text-page:#1C1B17;
+    --text-ink:#EDE8DC;
+    --text-sage:#16211D;
+    --text-tan:#23180C;
+    --text-muted:#6B6858;
+    --accent:#8F6A34;
+    --border:rgba(28,27,23,0.14);
+    --border-on-ink:rgba(237,232,220,0.18);
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg-page:#17181B;
+      --bg-ink:#000000;
+      --bg-sage:#4B5D57;
+      --bg-tan:#7C6238;
+      --text-page:#EDE9DF;
+      --text-ink:#F2EEE5;
+      --text-sage:#E8EDE9;
+      --text-tan:#F5EDE0;
+      --text-muted:#A9A599;
+      --accent:#D8B876;
+      --border:rgba(237,233,223,0.14);
+      --border-on-ink:rgba(237,232,220,0.14);
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg-page:#17181B;
+    --bg-ink:#000000;
+    --bg-sage:#4B5D57;
+    --bg-tan:#7C6238;
+    --text-page:#EDE9DF;
+    --text-ink:#F2EEE5;
+    --text-sage:#E8EDE9;
+    --text-tan:#F5EDE0;
+    --text-muted:#A9A599;
+    --accent:#D8B876;
+    --border:rgba(237,233,223,0.14);
+    --border-on-ink:rgba(237,232,220,0.14);
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box;}
+  html{background:var(--bg-page);}
+  body{
+    margin:0;
+    background:var(--bg-page);
+    color:var(--text-page);
+    font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  h1,h2,h3{
+    font-family:"Fraunces",Georgia,"Times New Roman",serif;
+    font-weight:600;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    text-wrap:balance;
+    margin:0;
+  }
+  a{color:inherit;}
+  img{max-width:100%;}
+  [hidden]{display:none!important;}
+  ::selection{background:var(--accent);color:var(--bg-ink);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+
+  .mono{
+    font-family:"Space Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-variant-numeric:tabular-nums;
+  }
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding-inline:24px;
+  }
+  .eyebrow{
+    font-family:"Space Mono",monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    opacity:0.72;
+    margin:0 0 14px;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:color-mix(in srgb, var(--bg-page) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-block:16px;
+  }
+  .brand{
+    font-family:"Fraunces",serif;
+    font-weight:600;
+    font-size:1.05rem;
+    text-decoration:none;
+    letter-spacing:-0.01em;
+  }
+  .nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .nav-links a{
+    text-decoration:none;
+    font-size:0.86rem;
+    font-weight:500;
+    color:var(--text-muted);
+    padding-bottom:3px;
+    border-bottom:1px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .nav-links a:hover, .nav-links a.is-active{
+    color:var(--text-page);
+    border-color:var(--accent);
+  }
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:1px solid var(--border);
+    border-radius:6px;
+    width:38px;height:34px;
+    font-family:"Space Mono",monospace;
+    font-size:0.8rem;
+    color:var(--text-page);
+    cursor:pointer;
+  }
+  @media (max-width:720px){
+    .nav-links{
+      position:absolute;
+      top:100%;left:0;right:0;
+      flex-direction:column;
+      gap:0;
+      background:var(--bg-page);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-links.is-open{display:flex;}
+    .nav-links:not(.is-open){display:none;}
+    .nav-links a{
+      padding:14px 24px;
+      width:100%;
+      border-bottom:1px solid var(--border);
+      border-left:2px solid transparent;
+    }
+    .nav-links a.is-active{border-left-color:var(--accent);border-bottom-color:var(--border);}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- Section bands ---------- */
+  .band{padding-block:88px;}
+  .band-page{background:var(--bg-page);color:var(--text-page);}
+  .band-ink{background:var(--bg-ink);color:var(--text-ink);}
+  .band-sage{background:var(--bg-sage);color:var(--text-sage);}
+  .band-tan{background:var(--bg-tan);color:var(--text-tan);}
+  @media (max-width:720px){ .band{padding-block:56px;} }
+
+  .section-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:24px;
+    margin-bottom:44px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.1rem);}
+  .section-sub{
+    max-width:34ch;
+    font-size:0.95rem;
+    opacity:0.78;
+    margin:10px 0 0;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{padding-block:76px 88px;}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+    align-items:end;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,6.4vw,4.4rem);
+  }
+  .hero-role{
+    margin-top:18px;
+    font-size:1.15rem;
+    max-width:38ch;
+    color:var(--text-muted);
+  }
+  .hero-meta{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    align-items:flex-start;
+    padding-bottom:6px;
+  }
+  .hero-loc{
+    font-family:"Space Mono",monospace;
+    font-size:0.82rem;
+    color:var(--text-muted);
+  }
+  .hero-links{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .hero-links a{
+    text-decoration:none;
+    font-size:0.92rem;
+    font-weight:600;
+    border-bottom:1px solid var(--accent);
+    padding-bottom:2px;
+  }
+  .hero-links a:hover{color:var(--accent);}
+  @media (max-width:780px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-meta{align-items:flex-start;}
+  }
+
+  /* ---------- About ---------- */
+  .about-text{
+    max-width:74ch;
+    font-size:1.34rem;
+    line-height:1.58;
+    margin:0 0 22px;
+  }
+  .about-text:last-child{margin-bottom:0;}
+  .about-text strong{font-weight:600;color:var(--text-ink);}
+
+  /* ---------- Education ---------- */
+  .edu-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+  @media (max-width:780px){ .edu-grid{grid-template-columns:1fr;} }
+  .edu-card{
+    background:color-mix(in srgb, var(--accent) 7%, transparent);
+    border:1px solid color-mix(in srgb, var(--accent) 24%, transparent);
+    border-radius:4px;
+    padding:28px 26px;
+  }
+  .edu-card h3{font-size:1.24rem;margin-bottom:4px;}
+  .edu-school{font-size:0.92rem;font-weight:600;opacity:0.85;margin-bottom:14px;}
+  .edu-meta{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    font-family:"Space Mono",monospace;
+    font-size:0.78rem;
+    opacity:0.85;
+    margin-bottom:18px;
+    flex-wrap:wrap;
+  }
+  .edu-card p{font-size:0.94rem;line-height:1.6;margin:0 0 14px;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{
+    font-family:"Space Mono",monospace;
+    font-size:0.72rem;
+    padding:5px 10px;
+    border:1px solid currentColor;
+    border-radius:100px;
+    opacity:0.86;
+    white-space:nowrap;
+  }
+
+  /* ---------- Experience ---------- */
+  .xp-list{display:flex;flex-direction:column;}
+  .xp-row{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:32px;
+    padding-block:30px;
+    border-top:1px solid var(--border);
+  }
+  .xp-row:last-child{border-bottom:1px solid var(--border);}
+  @media (max-width:780px){
+    .xp-row{grid-template-columns:1fr;gap:10px;}
+  }
+  .xp-time{
+    font-family:"Space Mono",monospace;
+    font-size:0.78rem;
+    color:color-mix(in srgb, var(--text-sage) 68%, transparent);
+    padding-top:4px;
+  }
+  .xp-role{font-size:1.12rem;font-weight:600;margin-bottom:2px;}
+  .xp-company{font-size:0.92rem;color:color-mix(in srgb, var(--text-sage) 68%, transparent);margin-bottom:14px;}
+  .xp-bullets{
+    margin:0 0 16px;
+    padding-left:18px;
+    font-size:0.95rem;
+    line-height:1.62;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .xp-bullets li{padding-left:2px;}
+
+  /* ---------- Skills ---------- */
+  .skill-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:36px 48px;
+  }
+  @media (max-width:780px){ .skill-grid{grid-template-columns:1fr;} }
+  .skill-group h3{
+    font-size:0.78rem;
+    font-family:"Space Mono",monospace;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-weight:700;
+    margin-bottom:14px;
+    opacity:0.85;
+  }
+  .skill-group .tag-row .tag{border-color:currentColor;}
+
+  /* ---------- Projects ---------- */
+  .proj-group-label{
+    font-family:"Space Mono",monospace;
+    font-size:0.74rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--text-muted);
+    padding-top:32px;
+    margin-bottom:18px;
+    border-top:1px solid var(--border);
+  }
+  .proj-group-label:first-child{border-top:none;padding-top:0;}
+  .proj-list{display:flex;flex-direction:column;gap:32px;margin-bottom:8px;}
+  .proj-card{
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:34px 32px;
+    background:color-mix(in srgb, var(--text-page) 3%, transparent);
+  }
+  .proj-top{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    margin-bottom:6px;
+  }
+  .proj-cat{
+    font-family:"Space Mono",monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+  .proj-card h3{font-size:1.5rem;margin:2px 0 10px;}
+  .proj-top-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0;}
+  .topic-pill{
+    font-family:"Space Mono",monospace;
+    font-size:0.72rem;
+    padding:5px 12px;
+    border-radius:100px;
+    background:color-mix(in srgb, var(--accent) 16%, transparent);
+    color:var(--accent);
+    white-space:nowrap;
+  }
+  .proj-links{display:flex;gap:16px;font-size:0.85rem;flex-shrink:0;}
+  .proj-links a{text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:1px;}
+  .proj-desc{font-size:1rem;line-height:1.6;margin:0 0 22px;max-width:70ch;}
+  .proj-detail-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    margin-bottom:22px;
+  }
+  @media (max-width:780px){ .proj-detail-grid{grid-template-columns:1fr;} }
+  .proj-detail h4{
+    font-family:"Space Mono",monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--text-muted);
+    margin:0 0 8px;
+  }
+  .proj-detail p{font-size:0.9rem;line-height:1.58;margin:0;}
+  .proj-stats{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:20px;
+  }
+  .stat-pill{
+    font-family:"Space Mono",monospace;
+    font-size:0.76rem;
+    background:var(--bg-ink);
+    color:var(--text-ink);
+    padding:6px 12px;
+    border-radius:100px;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  @media (max-width:780px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-grid h2{font-size:clamp(1.8rem,4.2vw,2.6rem);max-width:16ch;}
+  .contact-text{margin-top:16px;max-width:48ch;font-size:1rem;line-height:1.6;opacity:0.85;}
+  .contact-links{display:flex;flex-direction:column;gap:16px;}
+  .contact-links a{
+    text-decoration:none;
+    font-size:1.05rem;
+    font-weight:600;
+    border-bottom:1px solid var(--border-on-ink);
+    padding-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+  }
+  .contact-links a span{font-family:"Space Mono",monospace;font-size:0.78rem;opacity:0.6;font-weight:400;}
+  footer{
+    padding-block:22px;
+    text-align:center;
+    font-family:"Space Mono",monospace;
+    font-size:0.72rem;
+    opacity:0.55;
+  }
+
+  /* ---------- Reveal ---------- */
+  .reveal-init{opacity:0;transform:translateY(14px);}
+  .reveal-init.is-visible{
+    opacity:1;transform:translateY(0);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal-init{opacity:1!important;transform:none!important;transition:none!important;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">Amitesh Mohan</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">≡</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="band band-page hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Data &amp; AI · Finance &amp; Consulting</p>
+        <h1>Amitesh Mohan</h1>
+        <p class="hero-role">MSBA graduate of Carnegie Mellon's Tepper School of Business, turning financial and operational data into research-grade decisions.</p>
+      </div>
+      <div class="hero-meta">
+        <p class="hero-loc mono">Mumbai, India</p>
+        <div class="hero-links">
+          <a href="mailto:amiteshhmohan@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/amitesh-mohan-2a1794222/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/AmiteshMohan" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="band band-ink">
+    <div class="wrap reveal-init">
+      <p class="eyebrow">About</p>
+      <p class="about-text">I'm a <strong>Master of Science in Business Analytics</strong> graduate of Carnegie Mellon University's Tepper School of Business, building on a <strong>Bachelor of Business Administration and Quantitative Sciences</strong> from Emory University's Goizueta Business School (Finance &amp; Analytical Consulting).</p>
+      <p class="about-text">Over three summers I've worked across investment management, AI consulting, and consumer analytics — cutting equity data-collection time by ~60% across 250+ Nifty Small-Cap companies at Invesco Asset Management India, building a 27-level multi-modal emotion recognition system at Fractal AI Analytics, and shipping a sentiment-driven demand-forecasting framework at Samsonite India.</p>
+      <p class="about-text">I'm now looking for full-time roles in <strong>finance and consulting</strong> where I can apply data science, causal inference, and applied AI to real decisions — the same way I've tried to on every project below.</p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="band band-tan">
+    <div class="wrap">
+      <div class="section-head reveal-init">
+        <h2>Skills</h2>
+      </div>
+      <div class="skill-grid reveal-init">
+        <div class="skill-group">
+          <h3>Business &amp; Financial Analytics</h3>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL</span>
+            <span class="tag">Excel</span><span class="tag">Stata</span><span class="tag">Tableau</span>
+            <span class="tag">Power BI</span><span class="tag">MongoDB</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Machine Learning, Causal Inference &amp; Optimization</h3>
+          <div class="tag-row">
+            <span class="tag">scikit-learn</span><span class="tag">DoWhy</span><span class="tag">EconML</span>
+            <span class="tag">statsmodels</span><span class="tag">NetworkX</span><span class="tag">GeoPandas</span>
+            <span class="tag">K-Means Clustering</span><span class="tag">LDA Topic Modeling</span><span class="tag">Gurobi (MIP)</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Applied AI &amp; Apps</h3>
+          <div class="tag-row">
+            <span class="tag">Streamlit</span><span class="tag">Claude API</span><span class="tag">yfinance</span>
+            <span class="tag">Plotly</span><span class="tag">Pandas / NumPy</span><span class="tag">ReportLab</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Certifications</h3>
+          <div class="tag-row">
+            <span class="tag">AWS Cloud Practitioner Essentials</span>
+            <span class="tag">MS edX — Python for Data Science</span>
+            <span class="tag">Coursera — ML Foundations</span>
+            <span class="tag">Coursera — Applied ML in Python</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="band band-page">
+    <div class="wrap">
+      <div class="section-head reveal-init">
+        <h2>Projects</h2>
+      </div>
+
+      <p class="proj-group-label reveal-init">Independent &amp; Capstone Projects</p>
+      <div class="proj-list reveal-init">
+
+        <!-- PROJECT: India Stock Analyzer -->
+        <article class="proj-card">
+          <div class="proj-top">
+            <div>
+              <p class="proj-cat">Solo Project · Applied AI / FinTech</p>
+              <h3>India Stock Analyzer</h3>
+            </div>
+            <div class="proj-top-right">
+              <span class="topic-pill">Equity Research</span>
+              <div class="proj-links">
+                <a href="https://github.com/AmiteshMohan/india-stock-analyzer" target="_blank" rel="noopener">GitHub ↗</a>
+              </div>
+            </div>
+          </div>
+          <p class="proj-desc">Institutional-quality equity research for any NSE/BSE stock — live pricing, four years of fundamentals, an AI-written morning note, and an interactive DCF valuation, all in one Streamlit app.</p>
+          <div class="proj-stats">
+            <span class="stat-pill">5 research pages in 1 app</span>
+            <span class="stat-pill">4-yr fundamentals</span>
+            <span class="stat-pill">15-stock live screener</span>
+          </div>
+          <div class="proj-detail-grid">
+            <div class="proj-detail">
+              <h4>Problem</h4>
+              <p>Investors without a Bloomberg terminal have no single place to get live NSE/BSE pricing, clean fundamentals, and a defensible valuation for a stock.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Approach</h4>
+              <p>Built a five-page app on yfinance: live price vs. Nifty 50, 4-year income/margin/cash-flow analysis with colour-coded balance-sheet health checks, a Claude-generated equity note with buy/hold/sell + Q&amp;A, a DCF with 6 assumption sliders and a WACC/terminal-growth sensitivity table, and a 15-stock sector screener.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Impact</h4>
+              <p>Replaces four separate sources analysts normally pull from — live quotes, financials, a written note, and a valuation model — with real-time over/undervaluation flags as assumptions change.</p>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">yfinance</span>
+            <span class="tag">Claude API</span><span class="tag">Plotly</span><span class="tag">Pandas / NumPy</span><span class="tag">ReportLab</span>
+          </div>
+        </article>
+
+        <!-- PROJECT: Project Geminae -->
+        <article class="proj-card">
+          <div class="proj-top">
+            <div>
+              <p class="proj-cat">MSBA Capstone</p>
+              <h3>Project Geminae — Induced Seismicity Causal Dashboard</h3>
+            </div>
+            <div class="proj-top-right">
+              <span class="topic-pill">Causal Inference</span>
+              <div class="proj-links">
+                <a href="https://github.com/RaymondTuo/induced-seismicity-dashboard" target="_blank" rel="noopener">GitHub ↗</a>
+              </div>
+            </div>
+          </div>
+          <p class="proj-desc">A multi-radius causal-inference pipeline that isolates how wastewater injection actually drives induced earthquakes near faults — not just correlates with them.</p>
+          <div class="proj-stats">
+            <span class="stat-pill">660K+ well records</span>
+            <span class="stat-pill">6.2K+ seismic events</span>
+            <span class="stat-pill">20× effect at 3–4km vs. 20km</span>
+            <span class="stat-pill">R² ≈ 0.55 at 5–7km</span>
+          </div>
+          <div class="proj-detail-grid">
+            <div class="proj-detail">
+              <h4>Problem</h4>
+              <p>Regulators and well operators need to know whether injection volume causally drives seismic magnitude near faults, and at what distance risk actually concentrates — correlation alone can't justify regulation.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Approach</h4>
+              <p>Spatially joined wells to seismic events across 1–20km radii, then built a DoWhy causal DAG (injection volume → pressure → magnitude, controlling for fault distance and fault-segment density) with bootstrap confidence intervals and refutation testing at both well- and event-level, surfaced through an interactive dashboard.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Impact</h4>
+              <p>Found effects up to ~20× stronger at 3–4km than at 20km, and identified 5–7km as the radius that best balances effect size and predictive power — evidence for spatially-targeted rather than blanket regulation.</p>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">DoWhy</span><span class="tag">EconML</span>
+            <span class="tag">scikit-learn</span><span class="tag">statsmodels</span><span class="tag">NetworkX</span>
+            <span class="tag">GeoPandas</span><span class="tag">Streamlit</span><span class="tag">Plotly</span>
+          </div>
+        </article>
+
+        <!-- PROJECT: Netflix Churn -->
+        <article class="proj-card">
+          <div class="proj-top">
+            <div>
+              <p class="proj-cat">Machine Learning · Customer Analytics</p>
+              <h3>Netflix Subscriber Churn Prediction</h3>
+            </div>
+            <div class="proj-top-right">
+              <span class="topic-pill">Customer Churn</span>
+            </div>
+          </div>
+          <p class="proj-desc">An end-to-end churn-prediction pipeline that trains on AWS SageMaker and serves live risk scores through a Streamlit dashboard backed by Amazon RDS.</p>
+          <div class="proj-stats">
+            <span class="stat-pill">99.2% accuracy</span>
+            <span class="stat-pill">0.9999 ROC-AUC</span>
+            <span class="stat-pill">100% precision</span>
+          </div>
+          <div class="proj-detail-grid">
+            <div class="proj-detail">
+              <h4>Problem</h4>
+              <p>Retention teams need to know which subscribers are likely to cancel before they do, and need that signal available for live scoring — not just a one-off accuracy number in a notebook.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Approach</h4>
+              <p>Cleaned and feature-engineered subscriber data in AWS SageMaker, trained and compared multiple candidate models with automatic model selection, exported the winning pipeline and evaluation artifacts to Amazon S3, and served live predictions through a Streamlit scoring app that writes every prediction to an Amazon RDS (MySQL) database alongside model-performance and retention-target tables.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Impact</h4>
+              <p>Selected a Histogram Gradient Boosting classifier reaching 99.2% accuracy, 100% precision, 98.4% recall, and 0.9999 ROC-AUC on the held-out test set, and used it to generate a ranked retention-target list of high-risk subscribers.</p>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">AWS SageMaker</span><span class="tag">Amazon S3</span>
+            <span class="tag">Amazon RDS (MySQL)</span><span class="tag">Streamlit</span><span class="tag">scikit-learn</span><span class="tag">Plotly</span>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="proj-group-label reveal-init">MSBA Coursework Projects</p>
+      <div class="proj-list reveal-init">
+
+        <!-- PROJECT: Horizon Telecom -->
+        <article class="proj-card">
+          <div class="proj-top">
+            <div>
+              <p class="proj-cat">MSBA Coursework · Business Value Through Integrative Analytics</p>
+              <h3>Horizon Telecom — Data-Driven Retention Strategy</h3>
+            </div>
+            <div class="proj-top-right">
+              <span class="topic-pill">Customer Retention</span>
+            </div>
+          </div>
+          <p class="proj-desc">A three-stage descriptive → predictive → prescriptive pipeline that replaces reactive, one-size-fits-all retention with a revenue-at-risk-ranked, budget-constrained intervention plan.</p>
+          <div class="proj-stats">
+            <span class="stat-pill">$154K/week net value (+5.5%)</span>
+            <span class="stat-pill">0.90 ROC-AUC</span>
+            <span class="stat-pill">99.92% of optimal value in a simple playbook</span>
+          </div>
+          <div class="proj-detail-grid">
+            <div class="proj-detail">
+              <h4>Problem</h4>
+              <p>The retention team only engaged customers after they initiated cancellation with last-ditch, non-personalized offers, while acquisition costs run 5–8× higher than retention and no early-warning system flagged high-value customers before they churned.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Approach</h4>
+              <p>Segmented 7,043 customers into 4 behavioral clusters via K-means, built a signal-leakage-audited logistic regression churn model (removing 16 leaky variables), computed expected value per customer-tier combination (v = p̂ × η × CLTV − cost), and solved a multi-tier integer program allocating 150 weekly contacts under a $2,500 budget — validated with sensitivity analysis and a proposed A/B test to measure true intervention effectiveness.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Impact</h4>
+              <p>The optimized multi-tier plan retains $154K in weekly net value vs. $146K from a uniform single-tier approach (+$8K, +5.5%), and a simplified decision-tree playbook recovers 99.92% of that value for one-click field deployment without a live solver.</p>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">K-Means Clustering</span><span class="tag">Logistic Regression</span>
+            <span class="tag">Integer Programming</span><span class="tag">Sensitivity Analysis</span>
+            <span class="tag">A/B Test Design</span><span class="tag">Decision Trees</span>
+          </div>
+        </article>
+
+        <!-- PROJECT: Airport Gate Allocation -->
+        <article class="proj-card">
+          <div class="proj-top">
+            <div>
+              <p class="proj-cat">MSBA Coursework · Optimization for Prescriptive Analytics</p>
+              <h3>Airport Gate Allocation Optimization</h3>
+            </div>
+            <div class="proj-top-right">
+              <span class="topic-pill">Operations Research</span>
+            </div>
+          </div>
+          <p class="proj-desc">A mixed-integer program that reassigns arrival and departure gates to cut passenger walking distance without breaking airline terminal preferences.</p>
+          <div class="proj-stats">
+            <span class="stat-pill">15.8% less walking distance</span>
+            <span class="stat-pill">27 flights × 37 gates</span>
+            <span class="stat-pill">solved in &lt;1 second</span>
+          </div>
+          <div class="proj-detail-grid">
+            <div class="proj-detail">
+              <h4>Problem</h4>
+              <p>Manually built gate schedules waste passenger walking time and largely ignore airline terminal preferences, while still needing to respect fixed gate-occupancy windows and limited flight-time flexibility.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Approach</h4>
+              <p>Formulated the problem as a mixed-integer program in Python with Gurobi: binary variables for arrival gate-and-time assignment and departure time-shift, a hierarchical multi-objective (minimize arrival delay, then departure shift, then passenger walking distance plus terminal-preference violations, then terminal balance), and passenger-level walking-cost matrices built from a full gate-to-gate travel-time table.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Impact</h4>
+              <p>Solved a 1,917-constraint, 4,353-variable MIP in well under a second and cut total passenger walking distance by 15.8% (14,524 → 12,233.5 minutes) versus the manual baseline across 27 arrivals and 37 gates, with zero duplicate gate assignments.</p>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">Gurobi</span><span class="tag">Mixed-Integer Programming</span><span class="tag">Pandas</span>
+          </div>
+        </article>
+
+        <!-- PROJECT: Netflix Catalog Dashboard -->
+        <article class="proj-card">
+          <div class="proj-top">
+            <div>
+              <p class="proj-cat">MSBA Coursework · Data Exploration &amp; Visualization</p>
+              <h3>Netflix Catalog Analytics Dashboard</h3>
+            </div>
+            <div class="proj-top-right">
+              <span class="topic-pill">Content Analytics</span>
+            </div>
+          </div>
+          <p class="proj-desc">An interactive Tableau dashboard tracing how Netflix's global content catalog shifted from movies toward TV shows.</p>
+          <div class="proj-stats">
+            <span class="stat-pill">7 linked views</span>
+            <span class="stat-pill">15+ calculated fields</span>
+            <span class="stat-pill">2016 flagged as inflection point</span>
+          </div>
+          <div class="proj-detail-grid">
+            <div class="proj-detail">
+              <h4>Problem</h4>
+              <p>Netflix's public content catalog data is a flat list of titles — understanding how the catalog's composition actually shifted over time and across countries needs it reshaped into comparable, drillable metrics.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Approach</h4>
+              <p>Built a 7-view Tableau workbook (KPI strip, catalog additions by year, TV share over time, content type by country, genre mix, top-5-genres-by-country, and a granular title explorer), engineering 15+ calculated fields — country/genre splitting, type-aware duration parsing, a recent-vs-earlier year flag, and dense-rank genre ranking per country.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Impact</h4>
+              <p>Surfaced that TV shows have grown into a substantially larger share of Netflix's catalog since roughly 2016, and made each country's top genres and movie/TV mix explorable interactively rather than buried in a flat CSV.</p>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Tableau</span><span class="tag">Calculated Fields</span><span class="tag">Data Visualization</span>
+          </div>
+        </article>
+
+        <!-- PROJECT: Maze Runner -->
+        <article class="proj-card">
+          <div class="proj-top">
+            <div>
+              <p class="proj-cat">MSBA Coursework · Analytical Marketing</p>
+              <h3>Release-Date Optimization for The Maze Runner</h3>
+            </div>
+            <div class="proj-top-right">
+              <span class="topic-pill">Marketing Analytics</span>
+            </div>
+          </div>
+          <p class="proj-desc">Topic-modeled movie release scheduling that finds low-competition weeks by measuring thematic similarity, not just shared genre labels.</p>
+          <div class="proj-stats">
+            <span class="stat-pill">10 latent topics (LDA)</span>
+            <span class="stat-pill">4 low-competition weeks found</span>
+            <span class="stat-pill">0.057 closest-competitor distance</span>
+          </div>
+          <div class="proj-detail-grid">
+            <div class="proj-detail">
+              <h4>Problem</h4>
+              <p>Release-date scheduling usually relies on genre labels, which treat all same-genre films as equally competitive and miss the thematic overlap that actually drives audience cannibalization.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Approach</h4>
+              <p>Combined MovieLens user tags with Opus movie metadata, ran Latent Dirichlet Allocation (K=10 topics) on user tags to build a content-based topic profile per film, measured similarity as Euclidean distance in topic space, and built a weekly hybrid dissimilarity score (0.7 × closest competitor + 0.3 × mean distance) across 2014 — validated against a genre-based K-means + PCA baseline.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Impact</h4>
+              <p>Identified four low-competition release windows in 2014 (May 5, May 19, June 9, Nov 3) and the film's closest thematic substitutes (28 Weeks Later at distance 0.057, Resident Evil: Extinction, The Conjuring), recommending the week of June 9 with a positioning strategy built around minimal thematic overlap.</p>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">R</span><span class="tag">LDA Topic Modeling</span><span class="tag">K-Means</span><span class="tag">PCA</span><span class="tag">ggplot2 / tidytext</span>
+          </div>
+        </article>
+
+        <!-- PROJECT: LeBron -->
+        <article class="proj-card">
+          <div class="proj-top">
+            <div>
+              <p class="proj-cat">MSBA Coursework · Advanced AI and Business</p>
+              <h3>Do Great Players Make Their Teammates Better?</h3>
+            </div>
+            <div class="proj-top-right">
+              <span class="topic-pill">Sports Analytics</span>
+            </div>
+          </div>
+          <p class="proj-desc">An on/off-court statistical study of whether LeBron James's floor presence measurably improves teammate shooting efficiency.</p>
+          <div class="proj-stats">
+            <span class="stat-pill">+3.36% teammate FG% on-court</span>
+            <span class="stat-pill">p = 0.0465</span>
+            <span class="stat-pill">37.6% of makes assisted by LeBron</span>
+          </div>
+          <div class="proj-detail-grid">
+            <div class="proj-detail">
+              <h4>Problem</h4>
+              <p>It's widely assumed that superstar players make teammates better, but that claim is rarely tested statistically rather than anecdotally, and needs to separate a real on-court effect from confounds like lineup composition and opponent strength.</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Approach</h4>
+              <p>Parsed 2018–19 NBA play-by-play lineup data restricted to LeBron James's games, split teammates' shot attempts into on-court vs. off-court conditions within the same games to control for opponent, compared FG%, effective FG%, and points per shot attempt, ran two-proportion z-tests for significance, and checked the mechanism via assist rate and playmaking "gravity."</p>
+            </div>
+            <div class="proj-detail">
+              <h4>Impact</h4>
+              <p>Teammates shot 48.4% from the field with LeBron on the floor vs. 45.0% off it (+3.36 points, statistically significant at p = 0.0465), scored 1.245 vs. 1.201 points per shot attempt, and had 37.6% of their makes assisted by him — a lift that ranked 6th among a peer group of other elite, high-usage stars.</p>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NBA Play-by-Play Data</span><span class="tag">Two-Proportion Z-Test</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="band band-sage">
+    <div class="wrap">
+      <div class="section-head reveal-init">
+        <h2>Experience</h2>
+      </div>
+      <div class="xp-list reveal-init">
+
+        <div class="xp-row">
+          <div class="xp-time">Jun 2024 – Aug 2024</div>
+          <div>
+            <p class="xp-role">Financial Data Analyst Intern</p>
+            <p class="xp-company">Invesco Asset Management India Pvt. Ltd. · Mumbai, India</p>
+            <ul class="xp-bullets">
+              <li>Cut equity data-collection timelines by ~60% across 250+ Nifty Small-Cap companies by automating end-to-end financial data ingestion, letting investment teams screen portfolios 3x faster.</li>
+              <li>Enabled ~30% higher analyst throughput across investment teams, supporting faster cross-company comparison for 200+ equities through Python-based structured financial databases.</li>
+              <li>Delivered a Tableau dashboard and ratio-based performance analysis surfacing profitability and leverage trends for strategy discussions.</li>
+            </ul>
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">Tableau</span><span class="tag">Financial Databases</span></div>
+          </div>
+        </div>
+
+        <div class="xp-row">
+          <div class="xp-time">Jun 2023 – Aug 2023</div>
+          <div>
+            <p class="xp-role">Project Intern — Data Consulting</p>
+            <p class="xp-company">Fractal AI Analytics · Mumbai, India</p>
+            <ul class="xp-bullets">
+              <li>Expanded analytics capabilities across 3+ industries by developing a multi-modal emotion recognition system identifying 27 emotion levels, for scalable retail, finance, and healthcare applications.</li>
+              <li>Reduced client evaluation time by ~40% by translating complex ML outputs into executive-ready Power BI reports.</li>
+              <li>Evaluated for potential future patent filing supporting ~$50K+ projected annual client value.</li>
+            </ul>
+            <div class="tag-row"><span class="tag">Power BI</span><span class="tag">Multi-modal ML</span></div>
+          </div>
+        </div>
+
+        <div class="xp-row">
+          <div class="xp-time">Jun 2022 – Aug 2022</div>
+          <div>
+            <p class="xp-role">Data Analytics Intern</p>
+            <p class="xp-company">Samsonite India (Bagzone Lifestyles Ltd.) · Mumbai, India</p>
+            <ul class="xp-bullets">
+              <li>Improved product decision quality across 10–15 product lines by analyzing 100–250+ customer reviews per product through sentiment analysis.</li>
+              <li>Optimized inventory planning efficiency by ~20% by building a sales forecasting framework incorporating historical growth, customer preferences, and upcoming product launches.</li>
+            </ul>
+            <div class="tag-row"><span class="tag">Sentiment Analysis</span><span class="tag">Forecasting</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="band band-page">
+    <div class="wrap">
+      <div class="section-head reveal-init">
+        <h2>Education</h2>
+      </div>
+      <div class="edu-grid reveal-init">
+        <div class="edu-card">
+          <h3>Master of Science in Business Analytics</h3>
+          <p class="edu-school">Carnegie Mellon University — Tepper School of Business</p>
+          <div class="edu-meta"><span>Pittsburgh, PA</span><span>Aug 2025 – May 2026</span></div>
+          <p>Selected into a highly quantitative, interdisciplinary program with part-scholarship, integrating advanced analytics, business strategy, and decision science.</p>
+          <div class="tag-row">
+            <span class="tag">Machine Learning Fundamentals</span>
+            <span class="tag">ML for Business Applications</span>
+            <span class="tag">Data Analytics in Finance</span>
+            <span class="tag">Optimization for Prescriptive Analytics</span>
+            <span class="tag">Data Exploration &amp; Visualization</span>
+            <span class="tag">Advanced AI for Business Leaders</span>
+            <span class="tag">Programming in R &amp; Python</span>
+          </div>
+        </div>
+        <div class="edu-card">
+          <h3>BBA and Quantitative Sciences</h3>
+          <p class="edu-school">Emory University — Goizueta Business School</p>
+          <div class="edu-meta"><span>Atlanta, GA</span><span>Aug 2021 – May 2025</span></div>
+          <p>Concentrations in Finance and Analytical Consulting. Leadership: Treasurer, Data Interpreters Association; Vice President, Emory Eagles Cricket Club.</p>
+          <div class="tag-row">
+            <span class="tag">Finance</span>
+            <span class="tag">Analytical Consulting</span>
+          </div>
+          <p style="margin-top:16px;">Relevant coursework:</p>
+          <div class="tag-row">
+            <span class="tag">Data and Decision Analytics</span>
+            <span class="tag">Corporate Finance</span>
+            <span class="tag">Stocks and Financial Markets</span>
+            <span class="tag">Statistical Computing using R Programming</span>
+            <span class="tag">Strategic Management</span>
+            <span class="tag">Financial Accounting</span>
+            <span class="tag">Econometrics</span>
+            <span class="tag">Intermediate Python</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="band band-ink">
+    <div class="wrap contact-grid">
+      <div class="reveal-init">
+        <h2>Let's talk finance, consulting, or data &amp; AI.</h2>
+        <p class="contact-text">I graduated from CMU's MSBA program in May 2026 and I'm looking for full-time roles where I can apply data science and AI to real financial and business decisions. Happy to talk about any of the projects above, or just compare notes on causal inference and equity research.</p>
+      </div>
+      <div class="contact-links reveal-init">
+        <a href="mailto:amiteshhmohan@gmail.com">Email <span>amiteshhmohan@gmail.com</span></a>
+        <a href="https://www.linkedin.com/in/amitesh-mohan-2a1794222/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+        <a href="https://github.com/AmiteshMohan" target="_blank" rel="noopener">GitHub <span>↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="band-page">Amitesh Mohan · 2026</footer>
+
+</main>
+
+<script>
+(function(){
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  var navAnchors = Array.prototype.slice.call(links.querySelectorAll('a'));
+  navAnchors.forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      var target = document.querySelector(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+        links.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+
+  try{
+    var sections = ['about','skills','projects','experience','education','contact']
+      .map(function(id){ return document.getElementById(id); })
+      .filter(Boolean);
+    if('IntersectionObserver' in window && sections.length){
+      var spy = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            navAnchors.forEach(function(a){
+              a.classList.toggle('is-active', a.getAttribute('href') === '#' + entry.target.id);
+            });
+          }
+        });
+      }, {rootMargin:'-45% 0px -45% 0px', threshold:0});
+      sections.forEach(function(s){ spy.observe(s); });
+    }
+  }catch(e){}
+
+  try{
+    var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal-init'));
+    if('IntersectionObserver' in window && reveals.length){
+      var ro = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            ro.unobserve(entry.target);
+          }
+        });
+      }, {threshold:0.14});
+      reveals.forEach(function(el){ ro.observe(el); });
+    } else {
+      reveals.forEach(function(el){ el.classList.add('is-visible'); });
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

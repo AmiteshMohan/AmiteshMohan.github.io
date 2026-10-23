@@ -250,7 +250,7 @@
     display:grid;
     grid-template-columns:1.1fr 0.9fr;
     gap:48px;
-    align-items:end;
+    align-items:start;
   }
   .hero h1{
     font-size:clamp(2.6rem,6.4vw,4.4rem);
@@ -262,6 +262,20 @@
     font-size:1.15rem;
     max-width:38ch;
     color:var(--text-muted);
+  }
+  .hero-side{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    align-items:flex-start;
+  }
+  .hero-photo{
+    width:190px;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    border-radius:16px;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow-md);
   }
   .hero-meta{
     display:flex;
@@ -294,6 +308,7 @@
   @media (max-width:780px){
     .hero-grid{grid-template-columns:1fr;}
     .hero-meta{align-items:flex-start;}
+    .hero-photo{width:140px;}
   }
 
   /* ---------- Hero entrance: a one-time settle, not a gesture — critically damped, no overshoot ---------- */
@@ -584,12 +599,15 @@
         <h1>Amitesh Mohan</h1>
         <p class="hero-role">MSBA graduate of Carnegie Mellon's Tepper School of Business, turning financial and operational data into research-grade decisions.</p>
       </div>
-      <div class="hero-meta">
-        <p class="hero-loc mono">Mumbai, India</p>
-        <div class="hero-links">
-          <a href="mailto:amiteshhmohan@gmail.com">Email</a>
-          <a href="https://www.linkedin.com/in/amitesh-mohan-2a1794222/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/AmiteshMohan" target="_blank" rel="noopener">GitHub</a>
+      <div class="hero-side">
+        <img class="hero-photo" src="headshot.jpg" width="320" height="400" alt="Amitesh Mohan">
+        <div class="hero-meta">
+          <p class="hero-loc mono">Mumbai, India</p>
+          <div class="hero-links">
+            <a href="mailto:amiteshhmohan@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/amitesh-mohan-2a1794222/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/AmiteshMohan" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
       </div>
     </div>

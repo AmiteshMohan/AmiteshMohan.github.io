@@ -11,52 +11,52 @@
 
 <style>
   :root{
-    --bg-page:#F2EEE5;
-    --bg-ink:#16181B;
-    --bg-sage:#C7D4CC;
-    --bg-tan:#C9A876;
-    --text-page:#1C1B17;
-    --text-ink:#EDE8DC;
-    --text-sage:#16211D;
-    --text-tan:#23180C;
-    --text-muted:#6B6858;
-    --accent:#8F6A34;
-    --border:rgba(28,27,23,0.14);
-    --border-on-ink:rgba(237,232,220,0.18);
+    --bg-page:#EEF3F9;
+    --bg-ink:#112B4D;
+    --bg-sage:#CBDAEA;
+    --bg-mist:#DEE8F3;
+    --text-page:#10202F;
+    --text-ink:#E8F0FA;
+    --text-sage:#10243A;
+    --text-mist:#10243A;
+    --text-muted:#52677D;
+    --accent:#2B62A8;
+    --border:rgba(16,32,47,0.15);
+    --border-on-ink:rgba(232,240,250,0.2);
     --shadow-sm:0 1px 2px color-mix(in srgb, var(--bg-ink) 7%, transparent);
     --shadow-md:0 1px 2px color-mix(in srgb, var(--bg-ink) 6%, transparent), 0 14px 32px -10px color-mix(in srgb, var(--bg-ink) 22%, transparent);
     color-scheme:light;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg-page:#17181B;
-      --bg-ink:#000000;
-      --bg-sage:#4B5D57;
-      --bg-tan:#7C6238;
-      --text-page:#EDE9DF;
-      --text-ink:#F2EEE5;
-      --text-sage:#E8EDE9;
-      --text-tan:#F5EDE0;
-      --text-muted:#A9A599;
-      --accent:#D8B876;
-      --border:rgba(237,233,223,0.14);
-      --border-on-ink:rgba(237,232,220,0.14);
+      --bg-page:#0C1521;
+      --bg-ink:#050A12;
+      --bg-sage:#1B2F48;
+      --bg-mist:#14243A;
+      --text-page:#E3ECF6;
+      --text-ink:#EAF1FA;
+      --text-sage:#E3ECF6;
+      --text-mist:#E3ECF6;
+      --text-muted:#9AAFC4;
+      --accent:#6FA8E8;
+      --border:rgba(227,236,246,0.15);
+      --border-on-ink:rgba(232,241,250,0.16);
       color-scheme:dark;
     }
   }
   :root[data-theme="dark"]{
-    --bg-page:#17181B;
-    --bg-ink:#000000;
-    --bg-sage:#4B5D57;
-    --bg-tan:#7C6238;
-    --text-page:#EDE9DF;
-    --text-ink:#F2EEE5;
-    --text-sage:#E8EDE9;
-    --text-tan:#F5EDE0;
-    --text-muted:#A9A599;
-    --accent:#D8B876;
-    --border:rgba(237,233,223,0.14);
-    --border-on-ink:rgba(237,232,220,0.14);
+    --bg-page:#0C1521;
+    --bg-ink:#050A12;
+    --bg-sage:#1B2F48;
+    --bg-mist:#14243A;
+    --text-page:#E3ECF6;
+    --text-ink:#EAF1FA;
+    --text-sage:#E3ECF6;
+    --text-mist:#E3ECF6;
+    --text-muted:#9AAFC4;
+    --accent:#6FA8E8;
+    --border:rgba(227,236,246,0.15);
+    --border-on-ink:rgba(232,241,250,0.16);
     color-scheme:dark;
   }
 
@@ -225,7 +225,7 @@
   .band-page{background:var(--bg-page);color:var(--text-page);}
   .band-ink{background:var(--bg-ink);color:var(--text-ink);}
   .band-sage{background:var(--bg-sage);color:var(--text-sage);}
-  .band-tan{background:var(--bg-tan);color:var(--text-tan);}
+  .band-mist{background:var(--bg-mist);color:var(--text-mist);}
   @media (max-width:720px){ .band{padding-block:56px;} }
 
   .section-head{
@@ -648,7 +648,7 @@
   </section>
 
   <!-- SKILLS -->
-  <section id="skills" class="band band-tan">
+  <section id="skills" class="band band-mist">
     <div class="wrap">
       <div class="section-head reveal-init">
         <h2>Skills</h2>
